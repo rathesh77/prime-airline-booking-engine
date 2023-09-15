@@ -13,13 +13,13 @@ const bookMiddleware = (req: Request, res: Response, next: NextFunction) => {
     res.send(HttpErrorHandling.invalidPayload());
     return;
   }
-  req.body.book = {...book}
+  req.body.book = {...book};
   next();
 };
 
 router.post('/book', bookMiddleware, async (req: Request, res: Response) => {
-  const bookRequest = req.body.book
-  console.log(bookRequest)
+  const bookRequest = req.body.book;
+  console.log(bookRequest);
   try {
     const book = await BookService.createBook(bookRequest);
     if (!book) {
