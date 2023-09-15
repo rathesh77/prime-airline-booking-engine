@@ -7,7 +7,7 @@ import HttpErrorHandling from '../errorHandling/HttpErrorHandling';
 const router = express.Router();
 
 const bookMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const book : BookDto = req.body;
+  const { book }  = req.body;
   if (book.userId === undefined || book.flightId === undefined || book.date === undefined) {
     res.status(400);
     res.send(HttpErrorHandling.invalidPayload());

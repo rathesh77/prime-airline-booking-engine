@@ -6,8 +6,6 @@ class BookService {
   static async createBook(bookRequest: BookDto): Promise<BookDto | null | never> {
     const { flightId, date } = bookRequest;
     try {
-      if (await DataAccess.getAvailableSeats(flightId, date) == 0)
-        return null;
 
       const book: BookDto = bookRequest;
       const response = await DataAccess.createBook(book);
