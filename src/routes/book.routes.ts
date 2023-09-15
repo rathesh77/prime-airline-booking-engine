@@ -8,7 +8,7 @@ const router = express.Router();
 
 const bookMiddleware = (req: Request, res: Response, next: NextFunction) => {
   const book : BookDto = req.body;
-  if (!book.userId || !book.flightId || !book.date) {
+  if (book.userId === undefined || book.flightId === undefined || book.date === undefined) {
     res.status(400);
     res.send(HttpErrorHandling.invalidPayload());
     return;
