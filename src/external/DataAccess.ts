@@ -3,7 +3,7 @@ import {BookDto} from '../dtos/book.dto';
 class DataAccess {
 
   static async getAvailableSeats(flightId: number, date: string) {
-    const result = await axios.get(`${process.env['DATA_ACCESS_API_URL']}/flight/${flightId}/get-seats/${date}`);
+    const result = await axios.get(`${process.env['DATA_ACCESS_API_URL']}/flight/get-seats?flightId=${flightId}&date=${date}`);
     if (result.status != 200) {
       throw 'An error occured with the DataAccess API';
     }

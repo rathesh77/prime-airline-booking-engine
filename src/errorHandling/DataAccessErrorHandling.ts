@@ -1,4 +1,4 @@
-import {ErrorType} from './ErrorType';
+import {ErrorType} from './interfaces/ErrorType';
 
 class DataAccessErrorHandling {
 
