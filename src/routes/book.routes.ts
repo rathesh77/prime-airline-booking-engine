@@ -7,7 +7,7 @@ import HttpErrorHandling from '../errorHandling/HttpErrorHandling';
 const router = express.Router();
 
 const bookMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const { book }  = req.body;
+  const book : BookDto = req.body.book;
   if (book.userId === undefined || book.flightId === undefined || book.date === undefined) {
     res.status(400);
     res.send(HttpErrorHandling.invalidPayload());
@@ -19,7 +19,6 @@ const bookMiddleware = (req: Request, res: Response, next: NextFunction) => {
 
 router.post('/book', bookMiddleware, async (req: Request, res: Response) => {
   const bookRequest = req.body.book;
-  console.log(bookRequest);
   try {
     const book = await BookService.createBook(bookRequest);
     if (!book) {

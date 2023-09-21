@@ -4,9 +4,7 @@ import DataAccess from '../external/DataAccess';
 class BookService {
 
   static async createBook(bookRequest: BookDto): Promise<BookDto | null | never> {
-    const { flightId, date } = bookRequest;
     try {
-
       const book: BookDto = bookRequest;
       const response = await DataAccess.createBook(book);
 
