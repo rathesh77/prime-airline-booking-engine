@@ -1,4 +1,5 @@
 import {BookDto} from '../dtos/book.dto';
+import { BookingHistoryDto } from '../dtos/bookingHistory.dto';
 import BaseClass from '../errorHandling/DataAccessErrorHandling';
 import DataAccess from '../external/DataAccess';
 class BookService {
@@ -17,7 +18,7 @@ class BookService {
     }
   }
 
-  static async getBookingHistory(userId: number): Promise<BookDto[] | never> {
+  static async getBookingHistory(userId: number): Promise<BookingHistoryDto[]> {
     try {
       const response = await DataAccess.getBookingHistory(userId);
 
@@ -25,6 +26,19 @@ class BookService {
         throw BaseClass.customError(response.data);
 
       return response.data;
+    } catch (e) {
+      throw BaseClass.genericError();
+    }
+  }
+
+  static async cancelBook(bookingId: number): Promise<number> {
+    try {
+      const response = await DataAccess.cancelBook(bookingId);
+
+      if (response.status != 202)
+        throw BaseClass.customError(response.data);
+
+      return response.status;
     } catch (e) {
       throw BaseClass.genericError();
     }
