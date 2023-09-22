@@ -1,5 +1,5 @@
-import {BookDto} from '../dtos/book.dto';
-import { BookingHistoryDto } from '../dtos/bookingHistory.dto';
+import BookDto from '../dtos/book.dto';
+import BookingHistoryDto from '../dtos/bookingHistory.dto';
 import BaseClass from '../errorHandling/DataAccessErrorHandling';
 import DataAccess from '../external/DataAccess';
 class BookService {

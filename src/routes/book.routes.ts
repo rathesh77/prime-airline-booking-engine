@@ -1,7 +1,7 @@
 import express, { NextFunction } from 'express';
 import { Request, Response } from 'express';
 import BookService from '../services/book.service';
-import {BookDto} from '../dtos/book.dto';
+import BookDto from '../dtos/book.dto';
 import HttpErrorHandling from '../errorHandling/HttpErrorHandling';
 
 const router = express.Router();
@@ -13,7 +13,7 @@ const createBookMiddleware = (req: Request, res: Response, next: NextFunction) =
     res.send(HttpErrorHandling.invalidPayload());
     return;
   }
-  const date = new Date(book.date)
+  const date = new Date(book.date);
   if (!(date instanceof Date && !isNaN(date.valueOf()))) {
     res.status(403);
     res.send(HttpErrorHandling.invalidPayload());

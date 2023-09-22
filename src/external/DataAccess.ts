@@ -1,5 +1,5 @@
 import axios from 'axios';
-import {BookDto} from '../dtos/book.dto';
+import BookDto from '../dtos/book.dto';
 
 class DataAccess {
 
