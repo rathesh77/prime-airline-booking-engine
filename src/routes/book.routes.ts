@@ -13,6 +13,12 @@ const createBookMiddleware = (req: Request, res: Response, next: NextFunction) =
     res.send(HttpErrorHandling.invalidPayload());
     return;
   }
+  const date = new Date(book.date)
+  if (!(date instanceof Date && !isNaN(date.valueOf()))) {
+    res.status(403);
+    res.send(HttpErrorHandling.invalidPayload());
+    return;
+  }
   req.body.book = {...book};
   next();
 };
