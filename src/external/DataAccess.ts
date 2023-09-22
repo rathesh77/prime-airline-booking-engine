@@ -8,8 +8,7 @@ class DataAccess {
   }
   static async getBookingHistory(userId: number) {
     try { 
-      const result = await axios.get(`${process.env['DATA_ACCESS_API_URL']}/booking-history`, { params: { userId: userId }});
-      return result;
+      return await axios.get(`${process.env['DATA_ACCESS_API_URL']}/booking-history`, { params: { userId: userId }});
     } catch (e) {
       console.log(e);
       throw e;

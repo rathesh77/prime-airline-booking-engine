@@ -52,9 +52,7 @@ router.post('/book', createBookMiddleware, async (req: Request, res: Response) =
 router.get('/booking-history', async (req: Request, res: Response) => {
   try {
     const userId = +req.query.userId!;
-    console.log(userId)
     const bookingHistory = await BookService.getBookingHistory(userId);
-    console.log(bookingHistory)
     res.send(bookingHistory);
   } catch (e) {
     res.send(400);
