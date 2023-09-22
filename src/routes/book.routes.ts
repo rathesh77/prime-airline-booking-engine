@@ -13,8 +13,10 @@ const createBookMiddleware = (req: Request, res: Response, next: NextFunction) =
     res.send(HttpErrorHandling.invalidPayload());
     return;
   }
-  const date = new Date(book.date);
-  if (!(date instanceof Date && !isNaN(date.valueOf()))) {
+  const date = book.date.split('/')
+  const frenchDate = date[1] + '/' + date[0] + '/' + date[2];
+  const englishDate = new Date(frenchDate).toLocaleDateString("fr");
+  if (englishDate == "Invalid Date") {
     res.status(403);
     res.send(HttpErrorHandling.invalidPayload());
     return;
