@@ -32,7 +32,7 @@ const cancelBookMiddleware = (req: Request, res: Response, next: NextFunction) =
     res.send(HttpErrorHandling.invalidPayload());
     return;
   }
-  req.body.book = bookingId;
+  req.body.bookingId = bookingId;
   next();
 };
 
@@ -69,9 +69,9 @@ router.get('/booking-history', async (req: Request, res: Response) => {
 });
 
 router.post('/cancel-book', cancelBookMiddleware, async (req: Request, res: Response) => {
-  const bookRequest = req.body.book;
+  const bookingId = req.body.bookingId;
   try {
-    const status = await BookService.cancelBook(bookRequest);
+    const status = await BookService.cancelBook(bookingId);
     res.sendStatus(status);
   } catch (e) {
     res.status(400);
