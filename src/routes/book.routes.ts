@@ -72,7 +72,8 @@ router.post('/cancel-book', cancelBookMiddleware, async (req: Request, res: Resp
   const bookingId = req.body.bookingId;
   try {
     const status = await BookService.cancelBook(bookingId);
-    res.sendStatus(status);
+    res.status(status);
+    res.send({})
   } catch (e) {
     res.status(400);
     res.send(e);

@@ -40,7 +40,7 @@ class BookService {
 
       return response.status;
     } catch (e) {
-      throw BaseClass.genericError();
+      throw 400;
     }
   }
 }
