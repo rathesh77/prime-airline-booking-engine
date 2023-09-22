@@ -18,7 +18,7 @@ const createBookMiddleware = (req: Request, res: Response, next: NextFunction) =
 };
 
 const cancelBookMiddleware = (req: Request, res: Response, next: NextFunction) => {
-  const bookingId : number = req.body.book;
+  const bookingId : number = req.body.bookingId;
   if (bookingId === undefined) {
     res.status(400);
     res.send(HttpErrorHandling.invalidPayload());
